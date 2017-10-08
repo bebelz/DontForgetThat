@@ -1,18 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule, MatCardModule, MatIconModule, MatTabsModule, MatToolbarModule } from '@angular/material';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
+import { EventListComponent } from './event-list/event-list.component';
+import { EventComponent } from './event/event.component';
+import { EventsService } from './services/events.service';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+const ROUTES: Routes = [
+  { path: 'events', component: EventListComponent},
+  { path: 'event/:id', component: EventDetailsComponent },
+  { path: '', redirectTo: 'events', pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    EventListComponent,
+    EventComponent,
+    EventDetailsComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(ROUTES),
   ],
-  providers: [],
+  providers: [
+    EventsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
