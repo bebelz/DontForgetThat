@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { DftEvent } from '../models/event';
 import { EventsService } from '../services/events.service';
@@ -11,14 +12,15 @@ import { EventsService } from '../services/events.service';
 })
 export class EventDetailsComponent implements OnInit {
 
-  public event: DftEvent;
+  public eventDetails: Observable<DftEvent>;
 
   constructor(private route: ActivatedRoute,
               private eventsService: EventsService) {
-    this.eventsService
-      .getEventDetails(this.route.paramMap['id'])
-      .subscribe((event: DftEvent) => this.event = event);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.eventDetails = this.route.paramMap.switchMap((params: ParamMap) => {
+      return this.eventsService.getEventDetails(params.get('id'));
+    });
+  }
 }
