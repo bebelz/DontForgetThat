@@ -8,6 +8,7 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventComponent } from './event/event.component';
 import { EventsService } from './services/events.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EventsService } from './services/events.service';
     FormsModule,
     MatToolbarModule,
     MatIconModule,
+    AppRoutingModule,
   ],
   providers: [
     EventsService

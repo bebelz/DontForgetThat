@@ -1,3 +1,4 @@
 <p *ngFor="let event of events | async">
   {{ event.name }}
+  <a [routerLink]="['/event', event.id]">GO</a>
 </p>

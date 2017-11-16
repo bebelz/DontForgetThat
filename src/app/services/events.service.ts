@@ -13,12 +13,27 @@ export class EventsService {
     return Observable.of([
       {
         id: 1,
-        name: 'DftEvent 1'
+        name: 'DftEvent 1',
+        creationDate: new Date(),
+        startDate: new Date()
       },
       {
         id: 2,
-        name: 'DftEvent 2'
+        name: 'DftEvent 2',
+        creationDate: new Date(),
+        startDate: new Date()
       }
     ]);
+  }
+
+  public getEventDetails(id: string): Observable<DftEvent> {
+    return Observable.of(
+      {
+        id: 1,
+        name: 'DftEvent 1',
+        creationDate: new Date(),
+        startDate: new Date()
+      }
+    );
   }
 }
