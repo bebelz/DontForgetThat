@@ -9,6 +9,10 @@ export class MainMenuComponent implements OnInit {
 
   constructor() { }
 
+<<<<<<< HEAD
   ngOnInit() {
   }
+=======
+  ngOnInit() { }
+>>>>>>> origin/master
 }
