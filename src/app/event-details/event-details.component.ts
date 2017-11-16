@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { DftEvent } from '../models/event';
 import { EventsService } from '../services/events.service';
+import { SimpleEvent } from '../models/simple-event';
 
 @Component({
   selector: 'app-event-details',
@@ -12,7 +12,7 @@ import { EventsService } from '../services/events.service';
 })
 export class EventDetailsComponent implements OnInit {
 
-  public eventDetails: Observable<DftEvent>;
+  public eventDetails: Observable<SimpleEvent>;
 
   constructor(private route: ActivatedRoute,
               private eventsService: EventsService) {
