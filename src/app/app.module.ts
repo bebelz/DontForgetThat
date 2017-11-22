@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatCardModule, MatIconModule, MatTabsModule, MatToolbarModule } from '@angular/material';
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { EventListComponent } from './event-list/event-list.component';
@@ -11,6 +10,9 @@ import { EventsService } from './services/events.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TaskLiskComponent } from './task-lisk/task-lisk.component';
+import { TaskComponent } from './task/task.component';
+import { TaskFormComponent } from './task-form/task-form.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EventListComponent,
     EventComponent,
     EventDetailsComponent,
+    TaskLiskComponent,
+    TaskComponent,
+    TaskFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,10 @@
-<mat-card class="example-card">
+<mat-card>
   <mat-card-title>{{event.name}}</mat-card-title>
   <mat-card-content>
     <p>{{event.description}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" [routerLink]="['/event', event.id]">GO</button>
-    <button mat-raised-button color="warn">TA DARONNE</button>
+    <button mat-raised-button color="primary" [routerLink]="['/event', event.id]">Go</button>
+    <button mat-raised-button color="warn">Supprimer</button>
   </mat-card-actions>
 </mat-card>
