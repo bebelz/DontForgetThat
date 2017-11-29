@@ -3,11 +3,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { SimpleEvent } from '../models/simple-event';
 import { EventTask } from '../models/event-task';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Injectable()
 export class EventsService {
 
-  constructor() { }
+  constructor(private db: AngularFirestore) { }
+
+  public addEvent(event: SimpleEvent): void {
+    this.db.collection('events').add(event);
+  }
 
   public getEventList(): Observable<SimpleEvent[]> {
     return Observable.of([
