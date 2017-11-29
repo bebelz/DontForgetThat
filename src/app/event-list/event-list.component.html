@@ -1,3 +1,9 @@
 <ng-container *ngFor="let event of events | async">
   <app-event [event]="event"></app-event>
 </ng-container>
+
+<button mat-raised-button color="primary"
+        *ngIf="!shouldShowCreationForm" (click)="showCreationForm()">Créer un évènement</button>
+<app-event-creation-form
+  *ngIf="shouldShowCreationForm"
+  (onFormClosed)="onCreationFormEvent($event)"></app-event-creation-form>
