@@ -15,27 +15,21 @@ export class EventsService {
   }
 
   public getEventList(): Observable<SimpleEvent[]> {
-    return Observable.of([
-      <SimpleEvent>{
-        id: 1,
-        name: 'DftEvent 1',
-        creationDate: new Date(),
-        startsOn: new Date(),
-        description: 'Event de test',
-      },
-      <SimpleEvent>{
-        id: 2,
-        name: 'DftEvent 2',
-        creationDate: new Date(),
-        startsOn: new Date(),
-        description: 'Event de test',
-      },
-    ]);
+    return this.db
+      .collection<SimpleEvent>('events')
+      .snapshotChanges()
+      .map(event => {
+        return event.map(e => {
+          const toAdd = <SimpleEvent>e.payload.doc.data();
+          toAdd.id = e.payload.doc.id;
+          return toAdd;
+        });
+      });
   }
 
   public getEventDetails(id: string): Observable<SimpleEvent> {
     return Observable.of(<SimpleEvent>{
-      id: 1,
+      id: '1',
       description: 'Event de test',
       name: 'DftEvent 1',
       startsOn: new Date(2017, 12, 30),

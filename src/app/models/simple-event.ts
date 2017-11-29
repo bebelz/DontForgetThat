@@ -1,7 +1,7 @@
 import { EventDetails } from './event-details';
 
 export interface SimpleEvent {
-  id: number;
+  id: string;
   name: string;
   description: string;
   creationDate: Date;
