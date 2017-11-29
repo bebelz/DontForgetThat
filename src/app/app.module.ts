@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
-  MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatTabsModule,
+  DateAdapter,
+  MatButtonModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule, MatNativeDateModule,
+  MatProgressSpinnerModule,
+  MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
@@ -10,7 +13,6 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { EventComponent } from './event/event.component';
 import { EventsService } from './services/events.service';
-import { AppRoutingModule } from './/app-routing.module';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskLiskComponent } from './task-lisk/task-lisk.component';
@@ -21,6 +23,8 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { EventCreationFormComponent } from './event-creation-form/event-creation-form.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     EventListComponent,
     EventComponent,
     EventDetailsComponent,
+    EventCreationFormComponent,
     TaskLiskComponent,
     TaskComponent,
     TaskFormComponent,
@@ -39,6 +44,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     MatToolbarModule,
     MatIconModule,
     AppRoutingModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatCardModule,
     MatIconModule,
     MatButtonModule,
