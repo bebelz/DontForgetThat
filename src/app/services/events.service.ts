@@ -10,8 +10,8 @@ export class EventsService {
 
   constructor(private db: AngularFirestore) { }
 
-  public addEvent(event: SimpleEvent): void {
-    this.db.collection('events').add(event);
+  public addEvent(event: SimpleEvent): Promise<any> {
+    return this.db.collection('events').add(event);
   }
 
   public getEventList(): Observable<SimpleEvent[]> {
