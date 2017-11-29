@@ -1,6 +1,15 @@
 <mat-toolbar color="primary">
-  <button mat-button [routerLink]="'/'">DontForgetThat</button>
-  <span class="spacer"></span>
-  <mat-icon class="icon">favorite</mat-icon>
-  <mat-icon class="icon">delete</mat-icon>
+  <mat-toolbar-row>
+    <button mat-button [routerLink]="'/'">DontForgetThat</button>
+    <span class="spacer"></span>
+    <ng-container *ngIf="!loggedUserName">
+      <span>
+        <button (click)="login()" mat-button>Log In</button>
+      </span>
+    </ng-container>
+    <ng-container *ngIf="loggedUserName">
+      {{ loggedUserName }}
+      <button (click)="logout()" mat-button>Log Out</button>
+    </ng-container>
+  </mat-toolbar-row>
 </mat-toolbar>
