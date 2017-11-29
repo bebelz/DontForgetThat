@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatIconModule, MatTabsModule, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatIconModule, MatProgressSpinnerModule, MatTabsModule,
+  MatToolbarModule
+} from '@angular/material';
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { EventListComponent } from './event-list/event-list.component';
@@ -13,6 +16,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskLiskComponent } from './task-lisk/task-lisk.component';
 import { TaskComponent } from './task/task.component';
 import { TaskFormComponent } from './task-form/task-form.component';
+import { AuthService } from './services/auth.service';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -35,10 +42,14 @@ import { TaskFormComponent } from './task-form/task-form.component';
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
   ],
   providers: [
-    EventsService
+    EventsService,
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })
