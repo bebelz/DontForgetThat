@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-title>
+    <mat-form-field>
+      <input matInput placeholder="Titre" [(ngModel)]="eventToCreate.name">
+    </mat-form-field>
+  </mat-card-title>
+
+  <mat-card-content>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" [(ngModel)]="eventToCreate.description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerStartsOn" placeholder="Début de l'évènement"
+             [(ngModel)]="eventToCreate.startsOn">
+      <mat-datepicker-toggle matSuffix [for]="pickerStartsOn"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStartsOn></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerEndsOn" placeholder="Fin de l'évènement (facultatif)"
+             [(ngModel)]="eventToCreate.endsOn">
+      <mat-datepicker-toggle matSuffix [for]="pickerEndsOn"></mat-datepicker-toggle>
+      <mat-datepicker #pickerEndsOn></mat-datepicker>
+    </mat-form-field>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="createEvent(eventToCreate)">Créer</button>
+    <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
+  </mat-card-actions>
+</mat-card>
