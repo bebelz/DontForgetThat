@@ -3,6 +3,6 @@
   <mat-card-content>
     <p>{{(eventDetails | async).description}}</p>
 
-    <app-task-lisk [taskList]="(eventDetails | async).details.tasks" ></app-task-lisk>
+    <app-task-lisk [taskList]="(eventDetails | async).tasks" ></app-task-lisk>
   </mat-card-content>
 </mat-card>

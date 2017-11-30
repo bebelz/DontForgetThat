@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { EventsService } from '../services/events.service';
 import { SimpleEvent } from '../models/simple-event';
+import { EventTask } from '../models/event-task';
 
 @Component({
   selector: 'app-event-details',
