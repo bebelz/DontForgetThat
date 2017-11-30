@@ -1,5 +1,5 @@
 export interface EventTask {
-  id: number;
+  id: string;
   name: string;
   description: string;
   dueDate: Date;
