@@ -13,15 +13,16 @@ import { EventTask } from '../models/event-task';
 })
 export class EventDetailsComponent implements OnInit {
 
-  public eventDetails: Observable<SimpleEvent>;
+  public event: Observable<SimpleEvent>;
+  public eventTasks: Observable<EventTask[]>;
 
   constructor(private route: ActivatedRoute,
               private eventsService: EventsService) {
   }
 
   ngOnInit() {
-    this.eventDetails = this.route.paramMap.switchMap((params: ParamMap) => {
-      return this.eventsService.getEventDetails(params.get('id'));
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+    this.event = this.eventsService.getEvent(id);
+    this.eventTasks = this.eventsService.getEventTasks(id);
   }
 }

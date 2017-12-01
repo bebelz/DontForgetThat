@@ -1,8 +1,8 @@
 <mat-card>
-  <mat-card-title>{{(eventDetails | async).name}}</mat-card-title>
+  <mat-card-title>{{(event | async)?.name}}</mat-card-title>
   <mat-card-content>
-    <p>{{(eventDetails | async).description}}</p>
+    <p>{{(event | async)?.description}}</p>
 
-    <app-task-lisk [taskList]="(eventDetails | async).tasks" ></app-task-lisk>
+    <app-task-lisk [taskList]="(eventTasks | async)" ></app-task-lisk>
   </mat-card-content>
 </mat-card>
