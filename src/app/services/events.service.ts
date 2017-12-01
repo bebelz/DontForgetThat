@@ -35,23 +35,30 @@ export class EventsService {
     this.db.collection('events').doc(eventId).collection('tasks').doc(taskId).delete();
   }
 
-  public getEventDetails(id: string): Observable<SimpleEvent> {
-    return Observable.of(<SimpleEvent>{
-      id: '1',
-      description: 'Event de test',
-      name: 'DftEvent 1',
-      startsOn: new Date(2017, 12, 30),
-      endsOn: new Date(2017, 12, 30),
-      users: [],
-      tasks: [
-        <EventTask>{
-          id: 1,
-          name: 'apporter bières',
-          description: 'C est important',
-          usersInCharge: [1, 2],
-          dueDate: new Date(2017, 11, 21)
-        }
-      ]
-    });
+  public getEvent(id: string): Observable<SimpleEvent> {
+    return this.db
+      .collection<SimpleEvent>('events')
+      .doc(id)
+      .snapshotChanges()
+      .map(event => {
+        const toAdd = <SimpleEvent>event.payload.data();
+        toAdd.id = event.payload.id;
+        return toAdd;
+      });
+  }
+
+  public getEventTasks(id: string): Observable<EventTask[]> {
+    return this.db
+      .collection('events')
+      .doc(id)
+      .collection('tasks')
+      .snapshotChanges()
+      .map(task => {
+        return task.map(t => {
+          const toAdd = <EventTask>t.payload.doc.data();
+          toAdd.id = t.payload.doc.id;
+          return toAdd;
+        });
+      });
   }
 }
