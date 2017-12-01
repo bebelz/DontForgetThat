@@ -2,6 +2,12 @@
   <mat-card-title>{{(event | async)?.name}}</mat-card-title>
   <mat-card-content>
     <p>{{(event | async)?.description}}</p>
+    <ng-container>
+      <mat-icon>alarm</mat-icon> {{(event | async)?.startsOn | date}}
+    </ng-container>
+    <ng-container *ngIf="(event | async)?.endsOn">
+      <mat-icon>alarm</mat-icon> {{(event | async)?.endsOn | date}}
+    </ng-container>
 
     <app-task-lisk
       [taskList]="(eventTasks | async)"

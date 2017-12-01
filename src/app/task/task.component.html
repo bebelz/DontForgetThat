@@ -2,6 +2,7 @@
   <mat-card-title>{{task.name}}</mat-card-title>
   <mat-card-content>
     <p>{{task.description}}</p>
+    <mat-icon>alarm</mat-icon> {{ task.dueDate | date }}
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="primary">Marquer comme fait</button>
