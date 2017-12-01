@@ -3,6 +3,13 @@
   <mat-card-content>
     <p>{{(event | async)?.description}}</p>
 
-    <app-task-lisk [taskList]="(eventTasks | async)" ></app-task-lisk>
+    <app-task-lisk
+      [taskList]="(eventTasks | async)"
+      [eventId]="eventId"></app-task-lisk>
+    <button mat-raised-button color="primary"
+            *ngIf="!shouldShowTaskForm" (click)="showTaskForm()">Ajouter une tâche</button>
+    <app-task-form *ngIf="shouldShowTaskForm"
+                   [eventId]="eventId"
+                   (onFormClosed)="onCreationFormEvent($event)"></app-task-form>
   </mat-card-content>
 </mat-card>
