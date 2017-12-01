@@ -1,3 +1,26 @@
-<p>
-  task-form works!
-</p>
+<mat-card>
+  <mat-card-title>
+    <mat-form-field>
+      <input matInput placeholder="Titre" [(ngModel)]="taskToCreate.name">
+    </mat-form-field>
+  </mat-card-title>
+
+  <mat-card-content>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" [(ngModel)]="taskToCreate.description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerStartsOn" placeholder="A faire pour quand ?"
+             [(ngModel)]="taskToCreate.dueDate">
+      <mat-datepicker-toggle matSuffix [for]="pickerStartsOn"></mat-datepicker-toggle>
+      <mat-datepicker #pickerStartsOn></mat-datepicker>
+    </mat-form-field>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="createTask(eventId, taskToCreate)">Créer</button>
+    <button mat-raised-button color="warn" (click)="cancel()">Annuler</button>
+  </mat-card-actions>
+</mat-card>
