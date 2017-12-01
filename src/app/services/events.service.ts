@@ -31,8 +31,8 @@ export class EventsService {
     return this.db.collection('events').doc(eventId).collection('tasks').add(task);
   }
 
-  public removeEventTask(eventId: string, taskId: string): void {
-    this.db.collection('events').doc(eventId).collection('tasks').doc(taskId).delete();
+  public removeEventTask(eventId: string, taskId: string): Promise<any> {
+    return this.db.collection('events').doc(eventId).collection('tasks').doc(taskId).delete();
   }
 
   public getEvent(id: string): Observable<SimpleEvent> {
