@@ -5,6 +5,6 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="primary">Marquer comme fait</button>
-    <button mat-raised-button color="warn">Supprimer</button>
+    <button mat-raised-button color="warn" (click)="deleteTask(eventId, task.id)">Supprimer</button>
   </mat-card-actions>
 </mat-card>

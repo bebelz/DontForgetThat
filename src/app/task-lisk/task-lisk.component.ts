@@ -9,6 +9,9 @@ import { EventTask } from '../models/event-task';
 export class TaskLiskComponent implements OnInit {
 
   @Input()
+  public eventId: string;
+
+  @Input()
   public taskList: EventTask[];
 
   constructor() { }
