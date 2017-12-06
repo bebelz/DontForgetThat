@@ -5,34 +5,22 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { EventUser } from '../models/event-user';
+import { UsersService } from './users.service';
 
 @Injectable()
 export class AuthService {
 
-  private COLLECTION_KEY_USERS = 'users';
-
   constructor(private afAuth: AngularFireAuth,
-              private db: AngularFirestore) { }
+              private usersService: UsersService) { }
 
   public login(): Promise<any> {
     return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(data => {
-        this.db
-          .collection(this.COLLECTION_KEY_USERS)
-          .doc(data.user.uid)
-          .valueChanges()
-          .subscribe(savedUser => {
-            if (!savedUser) {
-              this.db
-                .collection(this.COLLECTION_KEY_USERS)
-                .doc(data.user.uid)
-                .set(<EventUser>{
-                  id: data.user.uid,
-                  displayName: data.user.displayName,
-                  email: data.user.email,
-                });
-            }
-          });
+        this.usersService.addUser(<EventUser>{
+          id: data.user.uid,
+          displayName: data.user.displayName,
+          email: data.user.email,
+        });
       });
   }
 
