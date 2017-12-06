@@ -1,4 +1,5 @@
 import { EventTask } from './event-task';
+import { EventUser } from './event-user';
 
 export interface SimpleEvent {
   id: string;
@@ -9,5 +10,5 @@ export interface SimpleEvent {
   endsOn?: Date;
 
   tasks?: EventTask[];
-  users?: any[];
+  users?: EventUser[];
 }
