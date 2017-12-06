@@ -11,6 +11,7 @@ export class EventsService {
   constructor(private db: AngularFirestore) { }
 
   public addEvent(event: SimpleEvent): Promise<any> {
+    event.creationDate = new Date();
     return this.db.collection('events').add(event);
   }
 
