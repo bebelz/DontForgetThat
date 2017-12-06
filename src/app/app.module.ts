@@ -24,6 +24,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { EventCreationFormComponent } from './event-creation-form/event-creation-form.component';
 import { AppRoutingModule } from './app-routing.module';
+import { UsersService } from './services/users.service';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     EventsService,
     AuthService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })
