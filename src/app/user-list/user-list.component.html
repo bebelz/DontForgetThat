@@ -1,0 +1,23 @@
+<mat-list role="list">
+  <h3 mat-subheader>Déjà présents</h3>
+  <ng-container *ngFor="let user of selectedUsers">
+    <mat-list-item role="listitem">
+      <button mat-icon-button color="primary" (click)="unselectUser(user)">
+        <mat-icon aria-label="Add user">remove_circle</mat-icon>
+      </button>
+      {{ user.displayName }}
+    </mat-list-item>
+  </ng-container>
+
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Autres</h3>
+  <ng-container *ngFor="let user of unselectedUsers">
+    <mat-list-item role="listitem">
+      <button mat-icon-button color="primary" (click)="selectUser(user)">
+        <mat-icon aria-label="Add user">add_circle</mat-icon>
+      </button>
+      {{ user.displayName }}
+    </mat-list-item>
+  </ng-container>
+</mat-list>
