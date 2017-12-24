@@ -1,0 +1,6 @@
+<app-user-list
+  [userList]="(userList | async)"
+  [alreadySelectedUserIds]="alreadySelectedUserIds"></app-user-list>
+
+<button mat-raised-button color="primary" (click)="save(alreadySelectedUserIds)">Sauvegarder</button>
+<button mat-button mat-dialog-close="">Annuler</button>
