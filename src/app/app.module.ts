@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
-  MatButtonModule, MatCardModule, MatDatepickerModule, MatIconModule, MatInputModule, MatNativeDateModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatIconModule,
+  MatInputModule, MatListModule,
+  MatNativeDateModule,
   MatProgressSpinnerModule,
   MatTabsModule,
   MatToolbarModule
@@ -25,6 +27,9 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { EventCreationFormComponent } from './event-creation-form/event-creation-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsersService } from './services/users.service';
+import { UserComponent } from './user/user.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserListSelectorComponent } from './user-list-selector/user-list-selector.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,9 @@ import { UsersService } from './services/users.service';
     TaskLiskComponent,
     TaskComponent,
     TaskFormComponent,
+    UserComponent,
+    UserListComponent,
+    UserListSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +53,8 @@ import { UsersService } from './services/users.service';
     MatIconModule,
     AppRoutingModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatDialogModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatCardModule,
@@ -52,10 +62,14 @@ import { UsersService } from './services/users.service';
     MatButtonModule,
     MatTabsModule,
     MatProgressSpinnerModule,
+    MatListModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+  ],
+  entryComponents: [
+    UserListSelectorComponent,
   ],
   providers: [
     EventsService,
