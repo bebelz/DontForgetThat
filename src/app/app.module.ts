@@ -27,7 +27,6 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { EventCreationFormComponent } from './event-creation-form/event-creation-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UsersService } from './services/users.service';
-import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListSelectorComponent } from './user-list-selector/user-list-selector.component';
 
@@ -42,7 +41,6 @@ import { UserListSelectorComponent } from './user-list-selector/user-list-select
     TaskLiskComponent,
     TaskComponent,
     TaskFormComponent,
-    UserComponent,
     UserListComponent,
     UserListSelectorComponent,
   ],
