@@ -1,13 +1,20 @@
 <mat-card>
-  <mat-card-title>{{(event | async)?.name}}</mat-card-title>
+  <mat-card-title>
+    {{(event | async)?.name}}
+    <button mat-icon-button color="primary" (click)="showUserSelector()">
+      <mat-icon aria-label="Show user selector">group_add</mat-icon>
+    </button>
+  </mat-card-title>
   <mat-card-content>
     <p>{{(event | async)?.description}}</p>
-    <ng-container>
-      <mat-icon>alarm</mat-icon> {{(event | async)?.startsOn | date}}
-    </ng-container>
-    <ng-container *ngIf="(event | async)?.endsOn">
-      <mat-icon>alarm</mat-icon> {{(event | async)?.endsOn | date}}
-    </ng-container>
+    <div>
+      <ng-container>
+        <mat-icon>alarm</mat-icon> {{(event | async)?.startsOn | date}}
+      </ng-container>
+      <ng-container *ngIf="(event | async)?.endsOn">
+        <mat-icon>alarm</mat-icon> {{(event | async)?.endsOn | date}}
+      </ng-container>
+    </div>
 
     <app-task-lisk
       [taskList]="(eventTasks | async)"
