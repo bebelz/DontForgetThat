@@ -48,6 +48,13 @@ export class EventsService {
       });
   }
 
+  public updateEventUserIds(eventId: string, userIds: string[]): Promise<any> {
+    return this.db
+      .collection<SimpleEvent>('events')
+      .doc(eventId)
+      .update({userIds: userIds});
+  }
+
   public getEventTasks(id: string): Observable<EventTask[]> {
     return this.db
       .collection('events')

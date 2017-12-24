@@ -8,6 +8,7 @@ export interface SimpleEvent {
   creationDate: Date;
   startsOn: Date;
   endsOn?: Date;
+  userIds: string[];
 
   tasks?: EventTask[];
   users?: EventUser[];
