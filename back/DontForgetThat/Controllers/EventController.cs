@@ -9,10 +9,12 @@ namespace DontForgetThat.Controllers
     public class EventController : ControllerBase
     {
         private EventsRepository _eventsRepository;
+        private EventItemsRepository _eventItemsRepository;
 
         public EventController(EventsContext context)
         {
             _eventsRepository = new EventsRepository(context);
+            _eventItemsRepository = new EventItemsRepository(context);
         }
 
         [HttpGet]
@@ -50,6 +52,20 @@ namespace DontForgetThat.Controllers
         public IActionResult RemoveItem(int eventId, int itemId)
         {
             _eventsRepository.RemoveItem(eventId, itemId);
+            return NoContent();
+        }
+
+        [HttpPost("{eventId}/items/{itemId}/markAsDone")]
+        public IActionResult MarkAsDone(int eventId, int itemId)
+        {
+            _eventItemsRepository.MarkItemAsDone(eventId, itemId);
+            return NoContent();
+        }
+
+        [HttpPost("{eventId}/items/{itemId}/markAsTodo")]
+        public IActionResult MarkAsTodo(int eventId, int itemId)
+        {
+            _eventItemsRepository.MarkItemAsTodo(eventId, itemId);
             return NoContent();
         }
 
