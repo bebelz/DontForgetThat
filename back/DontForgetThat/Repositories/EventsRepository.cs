@@ -9,15 +9,19 @@ namespace DontForgetThat.Repositories
     public class EventsRepository
     {
         private EventsContext _context;
+        private EventItemsRepository _eventItemsRepository;
 
         public EventsRepository(EventsContext context)
         {
             _context = context;
+            _eventItemsRepository = new EventItemsRepository(context);
         }
 
         public List<Event> GetAll()
         {
-            return _context.Events.ToList();
+            return _context.Events
+                .Include(e => e.Items)
+                .ToList();
         }
 
         public Event GetById(int id)
@@ -68,6 +72,7 @@ namespace DontForgetThat.Repositories
             {
                 ev.Items = new List<EventItem>();
             }
+            _eventItemsRepository.Validate(item);
             ev.Items.Add(item);
             _context.SaveChanges();
         }
